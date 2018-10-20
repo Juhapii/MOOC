@@ -1,0 +1,101 @@
+## 0.3
+kayttaja->selain:
+note left of selain
+kayttaja painaa Muistiinpanot ja siirtyy
+fullstack-exampleapp.herokuapp.com/notes
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+
+palvelin->selain: status 200, sivun HTML-koodi
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, sivun tyylit
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, javascript skripti
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, json listojen raakadata
+
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+ jossa on form-template
+end note
+
+## 0.4
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa muistiinpanon ja
+painaa talleta
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note
+note left of palvelin
+lähettää kirjoitetun muistiinpanon datan palvelimelle
+painaa talleta
+end note
+palvelin->selain: status 302, uudelleenohjauspyyntö eli lataa uudelleen notes-osoitteen
+
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+
+palvelin->selain: status 200, sivun HTML-koodi
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, sivun tyylit
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, javascript skripti
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, json listojen raakadata
+
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+ jossa on form-template
+end note
+
+## 0.5
+kayttaja->selain:
+note left of selain
+kayttaja menee osoitteeseen
+fullstack-exampleapp.herokuapp.com/spa
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa
+
+palvelin->selain: status 200, sivun HTML-koodi
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, sivun tyylit
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, javascript skripti
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, json listojen raakadata
+
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+ jossa on form-template
+end note
+## 0.6
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa muistiinpanon ja
+painaa talleta
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+ pyyntö on tyypiltään POST ja sisältää JSON-muotoisen muistiinpanon
+ jossa sisältö ja aikaleima
+end note
+palvelin->selain: status 201 created, sivun HTML-koodi
+note left of palvelin
+ Selain siis pysyy samalla sivulla, muita pyyntöjä ei suoriteta
+ Javascript-tiedostossa oleva koodi hoitaa lähetyksen.
+end note
+
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+ jossa on uusi muistiinpano
+end note
