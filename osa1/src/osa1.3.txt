@@ -1,0 +1,81 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+
+const Otsikko = (props) => {
+    return (
+      <div>
+        <p>{props.kurssi}</p>
+      </div>
+    )
+  }
+
+  const Osa1 = (props) => {
+    return (
+      <div>
+        <p>{props.osa1} {props.tehtavia1}</p>
+      </div>
+    )
+  }
+
+  const Osa2 = (props) => {
+    return (
+      <div>
+        <p>{props.osa2} {props.tehtavia2}</p>
+      </div>
+    )
+  }
+
+  const Osa3 = (props) => {
+    return (
+      <div>
+        <p>{props.osa3} {props.tehtavia3}</p>
+      </div>
+    )
+  }
+  const Sisalto = (props) => {
+    return (
+      <div>
+        <p><Osa1 osa1={props.osa1} tehtavia1={props.tehtavia1} /></p>
+        <p><Osa2 osa2={props.osa2} tehtavia2={props.tehtavia2} /></p>
+        <p><Osa3 osa3={props.osa3} tehtavia3={props.tehtavia3} /></p>
+      </div>
+    )
+  }
+
+  const Yhteensa = (props) => {
+    return (
+      <div>
+        <p>yhteensä {props.tehtavia1 + props.tehtavia2 + props.tehtavia3} tehtävää</p>
+      </div>
+    )
+  }
+
+const App = () => {
+    const kurssi = 'Half Stack -sovelluskehitys'
+    const osa1 = {
+      nimi: 'Reactin perusteet',
+      tehtavia: 10
+    }
+    const osa2 = {
+      nimi: 'Tiedonvälitys propseilla',
+      tehtavia: 7
+    }
+    const osa3 = {
+      nimi: 'Komponenttien tila',
+      tehtavia: 14
+    }
+
+  return (
+    <div>
+      <h1><Otsikko kurssi={kurssi} /></h1>
+      <p><Sisalto osa1={osa1.nimi} tehtavia1={osa1.tehtavia} osa2={osa2.nimi} tehtavia2={osa2.tehtavia} osa3={osa3.nimi} tehtavia3={osa3.tehtavia}/></p>
+      <p><Yhteensa tehtavia1={osa1.tehtavia} tehtavia2={osa2.tehtavia} tehtavia3={osa3.tehtavia} /></p>
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
