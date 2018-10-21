@@ -4,9 +4,23 @@ import ReactDOM from 'react-dom';
 const Statistics = (props) => {
     return(      
         <div>
-        <p>hyva {props.state.hyva}</p>
-        <p>neutraali {props.state.neutraali}</p>
-        <p>huono {props.state.huono}</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>hyva</td>
+                        <td>{props.state.hyva}</td>
+                    </tr>
+                    <tr>
+                        <td>neutraali</td>
+                        <td>{props.state.neutraali}</td>
+                    </tr>
+                    <tr>
+                        <td>huono</td>
+                        <td>{props.state.huono}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
         )
   }
@@ -14,10 +28,17 @@ const Statistics = (props) => {
   const Statistic = (props) => {
     return (
         <div>
-        <p>positiivisia {props.state.hyva / props.state.yhteensa *100} %</p>
-        <p>keskiarvo {(props.state.hyva - props.state.huono) / props.state.yhteensa}</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>positiivisia {props.state.hyva / props.state.yhteensa *100} %</td>
+                    </tr>
+                    <tr>
+                        <td>keskiarvo {(props.state.hyva - props.state.huono) / props.state.yhteensa}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-     
     )
   }
   const Button = ({ handleClick, text }) => (
@@ -79,12 +100,13 @@ class App extends React.Component {
           <div>
             <h1>statistiikka</h1>    
           </div>
-          <div>   
-            {this.state.yhteensa != 0 ? <Statistics state={this.state}/> : 'ei palautetta'}
-            {this.state.yhteensa != 0 ? <Statistic state={this.state}/> : ''}
-          </div>
+          {/*<div>*/}
 
+          {/*</div>*/}
+            {this.state.yhteensa !== 0 ? <Statistics state={this.state}/> : 'ei palautetta'}
+            {this.state.yhteensa !== 0 ? <Statistic state={this.state}/> : ''}
         </div>
+
       )
     }
   }
